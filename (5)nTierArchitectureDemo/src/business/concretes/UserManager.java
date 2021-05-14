@@ -23,8 +23,10 @@ public class UserManager implements UserService{
 	public void register(User user) {
 		boolean email_isSuccess = validationEmail(user);
 		boolean pass_isSuccess = validationPassword(user);
+		boolean name_isSuccess = checkName(user);
+		boolean checkEmail = checkEmail(user);
 
-		if(pass_isSuccess == false || email_isSuccess == false)
+		if(pass_isSuccess == false || email_isSuccess == false || name_isSuccess == false || checkEmail == false)
 		{
 			return;
 		}
@@ -90,6 +92,31 @@ public class UserManager implements UserService{
 		else {
 			return true;
 		}
+	}
 	
+	public static boolean checkName(User user)
+	{
+		String firstName = user.getFirstName();
+		String lastName = user.getLastName();
+		if(firstName.length() < 3 || lastName.length() < 2)
+		{
+			System.out.println("Ad veya soyad bos olamaz...");
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public static boolean checkEmail(User user)
+	{
+		if(user.getEmail() == "meteakcan@gmail.com")
+		{
+			System.out.println("Bu email adresi zaten kullanilmaktadir.Sifrenizi unuttuysaniz buraya tiklayin...");
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 }

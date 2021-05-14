@@ -11,7 +11,7 @@ public class consoleUI {
 		UserService userService = new UserManager(new DataAccessUserDao(),new LoggerManager());
 		loginWithGoogle google = new loginWithGoogle();		
 		
-		User user1 = new User(1,"Mete","Akcan","mete@gmail.com","12345678A");
+		User user1 = new User(1,"Mete","Akcan","meteakcan@gmail.com","123456789A");
 		userService.register(user1);
 		
 		userService.login(user1);
